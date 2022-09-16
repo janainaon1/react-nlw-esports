@@ -9,9 +9,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const prisma = new PrismaClient({
-  log: ['query']
-})
+const prisma = new PrismaClient()
+
+// const prisma = new PrismaClient({
+//   log: ['query']
+// })
 
 app.get('/games', async (request, response) => {
   const games = await prisma.game.findMany({
